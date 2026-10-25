@@ -2,6 +2,7 @@ import pygame
 
 import constants
 from logger import log_state
+from player import Player
 
 
 def main():
@@ -9,6 +10,9 @@ def main():
     screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0.0
+    player_x = constants.SCREEN_WIDTH / 2
+    player_y = constants.SCREEN_HEIGHT / 2
+    player = Player(player_x, player_y)
 
     while True:
         log_state()
@@ -16,6 +20,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
 
         # limit framerate to 60 FPS
